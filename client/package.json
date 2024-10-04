@@ -1,0 +1,32 @@
+{
+  "name": "hh-job-application-client",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Client for HH job application",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/vue": "^2.1.5",
+    "axios": "^1.6.2",
+    "framer-motion": "^11.9.0",
+    "gsap": "^3.12.5",
+    "motion": "^10.18.0",
+    "pinia": "^2.1.7",
+    "socket.io-client": "^4.7.2",
+    "vue": "^3.3.10",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.1",
+    "autoprefixer": "^10.4.16",
+    "daisyui": "^4.4.19",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.5",
+    "vue-tsc": "^1.8.25"
+  }
+}
