@@ -14,14 +14,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { SunIcon, MoonIcon, UserIcon, BoltIcon, ChartBarIcon } from '@heroicons/vue/24/solid';
+import { UserIcon, BoltIcon, ChartBarIcon } from '@heroicons/vue/24/solid';
 
-const isDarkMode = ref(false);
+// Theme functionality for future use
+// const isDarkMode = ref(false);
 
-const toggleTheme = () => {
-  document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'soviet-dark' : 'soviet-light');
-};
+// const toggleTheme = () => {
+//   document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'soviet-dark' : 'soviet-light');
+// };
 </script>
 
 <style scoped>
