@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteLocationNormalized, NavigationGuardNext, RouteLocationGeneric } from 'vue-router';
 import Login from '../views/Login.vue';
 import Profile from '../views/ProfileView.vue';
 import OAuthCallback from '../views/OAuthCallback.vue';
@@ -9,7 +9,7 @@ import { useAuthStore } from '@/modules/Auth';
 const routes = [
   { 
     path: '/', 
-    redirect: to => {
+    redirect: (_to: RouteLocationGeneric) => {
       const authStore = useAuthStore();
       return authStore.isAuthenticated ? '/profile' : '/login';
     }
@@ -17,7 +17,7 @@ const routes = [
   { 
     path: '/login', 
     component: Login,
-    beforeEnter: (to, from, next) => {
+    beforeEnter: (_to: RouteLocationNormalized, _from: RouteLocationNormalized, next: NavigationGuardNext) => {
       const authStore = useAuthStore();
       if (authStore.isAuthenticated) {
         next('/profile');
@@ -49,7 +49,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to: RouteLocationNormalized, _from: RouteLocationNormalized, next: NavigationGuardNext) => {
   const authStore = useAuthStore();
   const isAuthenticated = await authStore.checkAuth();
 
