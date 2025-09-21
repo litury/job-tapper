@@ -1,6 +1,6 @@
 import { io, Socket } from 'socket.io-client';
 
-const socket: Socket = io('https://job-tapper.ru.tuna.am', {
+const socket: Socket = io(import.meta.env.VITE_SERVER_URL, {
   withCredentials: true,
   path: '/socket.io'
 });
@@ -10,7 +10,7 @@ export const socketService = {
     socket.on(event, callback);
   },
 
-  emit(event: string, data: any) {
+  emit(event: string, data?: any) {
     socket.emit(event, data);
   },
 
