@@ -6,6 +6,7 @@ node_modules/
 # Сборки и дистрибутивы
 /build/
 /dist/
+/client/dist/
 
 # Логи и отладка
 *.log
