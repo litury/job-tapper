@@ -2,8 +2,20 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import { socketService } from '@/shared/services/socketService';
 
+interface User {
+  id: string;
+  email: string;
+  name?: string;
+}
+
+interface AuthResponse {
+  user: User;
+  access_token: string;
+  refresh_token: string;
+}
+
 export const useAuthStore = defineStore('auth', () => {
-  const user = ref(null);
+  const user = ref<User | null>(null);
   const accessToken = ref(localStorage.getItem('accessToken') || '');
   const refreshToken = ref(localStorage.getItem('refreshToken') || '');
 
@@ -16,7 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const login = async (code: string) => {
     try {
-      const response = await new Promise((resolve, reject) => {
+      const response = await new Promise<AuthResponse>((resolve, reject) => {
         socketService.emit('authenticate', { code });
         socketService.once('authenticated', resolve);
         socketService.once('auth_error', reject);
@@ -47,7 +59,7 @@ export const useAuthStore = defineStore('auth', () => {
   const checkAuth = async () => {
     if (accessToken.value) {
       try {
-        const response = await new Promise((resolve, reject) => {
+        const response = await new Promise<User>((resolve, reject) => {
           socketService.emit('validate_token', { accessToken: accessToken.value });
           socketService.once('token_valid', resolve);
           socketService.once('token_invalid', reject);
