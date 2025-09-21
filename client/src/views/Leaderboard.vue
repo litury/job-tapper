@@ -33,7 +33,7 @@ const leaderboard = ref([
 ]);
 
 onMounted(() => {
-  socketService.emit('get-leaderboard');
+  socketService.emit('get-leaderboard', null);
   socketService.on('leaderboard', (data) => {
     if (data && data.length > 0) {
       leaderboard.value = data;

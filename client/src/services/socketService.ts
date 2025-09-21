@@ -10,7 +10,7 @@ export const socketService = {
     socket.on(event, callback);
   },
 
-  emit(event: string, data: any) {
+  emit(event: string, data?: any) {
     socket.emit(event, data);
   },
 
