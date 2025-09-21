@@ -42,7 +42,8 @@ import { formatTime } from '@/shared/utils/formatters';
 const gameStore = useGameStore();
 const gameAreaRef = ref<HTMLElement | null>(null);
 
-const props = defineProps<{
+// Props are handled via emits, keeping definition for component interface
+defineProps<{
   handleClick: () => void;
   handleVacancyClick: (vacancy: any) => void;
   startCountdown: () => void;
